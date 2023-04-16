@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  db:
+    image: postgres
+    container_name: postgresql_airline
+    volumes:
+      - ./db_resources/init.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: always
+    environment:
+      - POSTGRES_USER=airline_user
+      - POSTGRES_PASSWORD=airline_password
+      - POSTGRES_DB=airline
+    ports:
+      - "5600:5432"
